@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alper Yıldırım</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafaf8;
+            --text: #1a1a18;
+            --text-secondary: #5c5c58;
+            --accent: #2d5a27;
+            --border: #e0dfd8;
+            --tag-bg: #f0efea;
+            --link: #2d5a27;
+            --link-hover: #1a3817;
+            --paper-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #131311;
+                --text: #e8e8e4;
+                --text-secondary: #9a9a94;
+                --accent: #7db876;
+                --border: #2a2a26;
+                --tag-bg: #1e1e1a;
+                --link: #7db876;
+                --link-hover: #a3d49d;
+                --paper-bg: #1a1a17;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 24px 120px;
+        }
+
+        /* Header */
+        header {
+            margin-bottom: 64px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            font-style: italic;
+        }
+
+        .contact-row {
+            margin-top: 20px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+        }
+
+        .contact-row a {
+            color: var(--link);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .contact-row a:hover {
+            border-bottom-color: var(--link);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 56px;
+        }
+
+        h2 {
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* Paper entries */
+        .paper {
+            margin-bottom: 32px;
+            padding: 20px 24px;
+            background: var(--paper-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .paper-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1.5px solid var(--accent);
+            transition: color 0.2s;
+        }
+
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+
+        .paper-venue {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .venue-tag {
+            background: var(--tag-bg);
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .paper-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        /* Bio */
+        .bio {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        .bio p + p {
+            margin-top: 12px;
+        }
+
+        /* Patent */
+        .patent {
+            margin-bottom: 16px;
+        }
+
+        .patent-title {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .patent-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 48px 20px 80px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .paper {
+                padding: 16px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alper Yıldırım</h1>
+            <p class="tagline">Mechanistic interpretability and interpretability-driven architectures.</p>
+            <div class="contact-row">
+                <a href="mailto:yildirim.alper.dev@gmail.com">yildirim.alper.dev@gmail.com</a>
+                <a href="https://github.com/AlperYildirim1">github</a>
+                <a href="https://scholar.google.com/citations?user=yUMIBd4AAAAJ&hl=en">scholar</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>About</h2>
+            <div class="bio">
+                <p>I am an independent researcher. I look inside models to understand how they represent information, then use those findings to build new ones.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Research</h2>
+
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://icml.cc/virtual/2026/poster/61710">Language as a Wave Phenomenon: Semantic Phase Locking and Interference in Neural Networks</a>
+                </div>
+                <div class="paper-venue">
+                    <span class="venue-tag">ICML 2026</span>
+                    <span>Alper Yıldırım, İbrahim Yücedağ</span>
+                </div>
+                <p class="paper-desc">PRISM replaces attention with complex-valued spectral filtering (FFT→H→IFFT). Interventional ablations show phase is not a byproduct but the network's preferred information carrier: phase-only filters retain &gt;95% of performance, while removing phase is catastrophic. This holds even under phase-hostile conditions (CReLU + LayerNorm), demonstrating that phase-based computation emerges from the spectral topology itself.</p>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/abs/2603.05228">The Geometric Inductive Bias of Grokking: Bypassing Phase Transitions via Architectural Topology</a>
+                </div>
+                <div class="paper-venue">
+                    <span class="venue-tag">Under Review</span>
+                    <span>Alper Yıldırım</span>
+                </div>
+                <p class="paper-desc">Constraining Transformer residual streams to a spherical topology eliminates the grokking delay entirely on modular arithmetic, but fails completely on non-commutative S5 permutation composition. This differential outcome shows the acceleration reflects task-specific geometric alignment, not generic regularization.</p>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title">
+                    <a href="https://arxiv.org/abs/2605.05151">Superposition Is Not Necessary: A Mechanistic Interpretability Analysis of Transformer Representations for Time Series Forecasting</a>
+                </div>
+                <div class="paper-venue">
+                    <span class="venue-tag">Under Review</span>
+                    <span>Alper Yıldırım</span>
+                </div>
+                <p class="paper-desc">Sparse autoencoder analysis of PatchTST reveals no evidence of strong superposition in its feed-forward representations. Dictionary expansion from 0.5× to 4.0× yields 0.214% average performance change, and causal interventions on dominant latents produce minimal forecast perturbation, offering a mechanistic explanation for why simple linear models remain competitive.</p>
+            </div>
+
+            <div class="paper">
+                <div class="paper-title">
+                    HAMON: A Passive Optical Forecasting Core for Long-Horizon Time Series
+                </div>
+                <div class="paper-venue">
+                    <span class="venue-tag">In Preparation</span>
+                    <span>Alper Yıldırım</span>
+                </div>
+                <p class="paper-desc">Historical context is encoded on an optical aperture, future positions are left dark, and cascaded trainable phase masks shape diffraction into the forecast region. No digital forecasting head. Competitive on several benchmarks with phase-scrambling ablations confirming the core uses temporal phase structure. Validated with TorchOptics as an independent cross-simulator check.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Patents</h2>
+            <div class="patent">
+                <div class="patent-title">Optical Time Series Forecasting System</div>
+                <p class="patent-desc">Turkish patent applications covering the HAMON architecture: phase encoding of time series onto optical apertures, passive diffractive inference kernel, differential intensity readout, training via differentiable digital twin, and multi-channel operation. Two applications pending.</p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Alper Yıldırım
+        </footer>
+    </div>
+</body>
+</html>
