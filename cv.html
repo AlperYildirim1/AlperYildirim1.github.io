@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | Alper Yıldırım</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafaf8;
+            --text: #1a1a18;
+            --text-secondary: #5c5c58;
+            --accent: #2d5a27;
+            --border: #e0dfd8;
+            --tag-bg: #f0efea;
+            --link: #2d5a27;
+            --link-hover: #1a3817;
+            --paper-bg: #ffffff;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #131311;
+                --text: #e8e8e4;
+                --text-secondary: #9a9a94;
+                --accent: #7db876;
+                --border: #2a2a26;
+                --tag-bg: #1e1e1a;
+                --link: #7db876;
+                --link-hover: #a3d49d;
+                --paper-bg: #1a1a17;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Newsreader', Georgia, serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 72px 24px 120px;
+        }
+
+        header {
+            margin-bottom: 48px;
+        }
+
+        .nav {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 32px;
+        }
+
+        .nav a, .contact-row a, .item a {
+            color: var(--link);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav a:hover, .contact-row a:hover, .item a:hover {
+            color: var(--link-hover);
+            border-bottom-color: var(--link-hover);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            max-width: 660px;
+        }
+
+        .contact-row {
+            margin-top: 20px;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+        }
+
+        section {
+            margin-bottom: 44px;
+        }
+
+        h2 {
+            font-size: 0.82rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .item {
+            margin-bottom: 24px;
+            padding: 18px 22px;
+            background: var(--paper-bg);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
+        .item-title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .item-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.76rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .item-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .tagline-list {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 14px;
+        }
+
+        .tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            background: var(--tag-bg);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        ul {
+            margin-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        footer {
+            margin-top: 64px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 48px 20px 80px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .item {
+                padding: 16px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="nav">
+                <a href="index.html">← home</a>
+            </div>
+
+            <h1>Alper Yıldırım</h1>
+            <p class="subtitle">AI researcher working on mechanistic interpretability, spectral structure, and interpretable-by-design architectures.</p>
+
+            <div class="contact-row">
+                <a href="mailto:yildirim.alper.dev@gmail.com">email</a>
+                <a href="https://github.com/AlperYildirim1">github</a>
+                <a href="https://scholar.google.com/citations?hl=en&user=yUMIBd4AAAAJ">scholar</a>
+                <a href="https://www.linkedin.com/in/alper-yildirim-8b6b6a228/">linkedin</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Profile</h2>
+            <div class="item">
+                <p class="item-desc">
+                    First-author ICML 2026 researcher specializing in mechanistic interpretability and interpretability-driven architectures.
+                    My work studies how representational structure, including phase, geometry, and superposition, determines model computation,
+                    generalization, and failure.
+                </p>
+                <div class="tagline-list">
+                    <span class="tag">mechanistic interpretability</span>
+                    <span class="tag">spectral structure</span>
+                    <span class="tag">phase-based computation</span>
+                    <span class="tag">LLMs</span>
+                    <span class="tag">time series</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="item">
+                <div class="item-title">B.Sc. Computer Engineering</div>
+                <div class="item-meta">Düzce University</div>
+                <p class="item-desc">GPA: 3.13 / 4.00</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Publications and manuscripts</h2>
+
+            <div class="item">
+                <div class="item-title">Language as a Wave Phenomenon: Semantic Phase Locking and Interference in Neural Networks</div>
+                <div class="item-meta">ICML 2026 Main Track | Alper Yıldırım, İbrahim Yücedağ</div>
+                <p class="item-desc">
+                    Shows that neural networks can use phase as a primary computational variable rather than as a residual feature of activations.
+                    Introduces a complex-valued, FFT-based sequence model where semantic structure is represented through phase relationships
+                    and spectral interference, suggesting a route toward efficient architectures that are more interpretable by design.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">The Geometric Inductive Bias of Grokking: Bypassing Phase Transitions via Architectural Topology</div>
+                <div class="item-meta">Under review | Sole author</div>
+                <p class="item-desc">
+                    Studies how geometric constraints on residual streams affect memorization and generalization dynamics. Spherical L2 topology
+                    reduces grokking onset by about 25x, while controls show the effect is task-structure specific rather than generic regularization.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">Superposition Is Not Necessary: Mechanistic Interpretability of Transformer Representations for Time Series</div>
+                <div class="item-meta">Under review | Sole author</div>
+                <p class="item-desc">
+                    Uses sparse autoencoders and causal interventions to study PatchTST representations. Finds no strong evidence of superposition
+                    in the tested forecasting representations, offering a mechanistic explanation for why simple linear models remain competitive.
+                </p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">HAMON: A Passive Optical Forecasting Core for Long-Horizon Time Series</div>
+                <div class="item-meta">In preparation | Sole author</div>
+                <p class="item-desc">
+                    Passive diffractive optical architecture for forecasting with no digital forecasting head. Uses phase encoding, diffractive
+                    propagation, and differential intensity readout.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Patents</h2>
+            <div class="item">
+                <div class="item-title">Optical Time Series Forecasting System</div>
+                <div class="item-meta">Two Turkish patent applications pending</div>
+                <p class="item-desc">
+                    Covers the HAMON architecture: phase encoding of time series onto optical apertures, passive diffractive inference kernel,
+                    differential intensity readout, differentiable digital twin training, and multi-channel operation.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Experience</h2>
+            <div class="item">
+                <div class="item-title">AI Engineer and Lead Researcher</div>
+                <div class="item-meta">isTechSoft | Jun 2024 to Jul 2025</div>
+                <ul>
+                    <li>Led technical execution of a TÜBİTAK 1505 government-funded medical AI R&amp;D project.</li>
+                    <li>Worked on medical LLM optimization using RAG, SFT, GRPO, benchmarking, and evaluation pipelines.</li>
+                    <li>Built an LLM-as-judge benchmarking pipeline that led to an accepted paper.</li>
+                    <li>Ran an LLM plus embedding plus reranker stack on a single 16 GB GPU for a production education platform.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Selected projects</h2>
+            <div class="item">
+                <ul>
+                    <li>Neural network from scratch in C++, implemented without ML libraries.</li>
+                    <li>Earthquake rupture detection from drone footage using U-Net, achieving over 95% accuracy.</li>
+                    <li>Pathologic Echo Hypothesis, EEG-based preprint with 840+ downloads.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical skills</h2>
+            <div class="item">
+                <p class="item-desc">
+                    Python, C++, C#, SQL, Java. PyTorch, HuggingFace, Scikit-learn, vLLM, Ollama, Llama.cpp, Unsloth.
+                    Mechanistic interpretability, sparse autoencoders, causal interventions, LLM fine-tuning, SFT, GRPO, DPO,
+                    LoRA, QLoRA, RAG, time-series forecasting, Transformers, Mamba, U-Net, ResNet, TFT, Docker, FastAPI, Flask, Git.
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            &copy; 2026 Alper Yıldırım
+        </footer>
+    </div>
+</body>
+</html>
