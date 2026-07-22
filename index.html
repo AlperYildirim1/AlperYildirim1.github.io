@@ -198,6 +198,25 @@
             margin-top: 4px;
         }
 
+
+        /* News */
+        .news-item {
+            display: grid;
+            grid-template-columns: 88px 1fr;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+
+        .news-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+        }
+
+        .news-text {
+            font-size: 0.98rem;
+        }
+
         /* Footer */
         footer {
             margin-top: 80px;
@@ -226,7 +245,7 @@
     <div class="container">
         <header>
             <h1>Alper Yıldırım</h1>
-            <p class="tagline">Mechanistic interpretability and interpretability-driven architectures.</p>
+            <p class="tagline">Mechanistic interpretability of phase, geometry, and causal structure in neural representations.</p>
             <div class="contact-row">
                 <a href="mailto:yildirim.alper.dev@gmail.com">yildirim.alper.dev@gmail.com</a>
                 <a href="https://github.com/AlperYildirim1">github</a>
@@ -238,7 +257,16 @@
         <section>
             <h2>About</h2>
             <div class="bio">
-                <p>I am an independent researcher. I look inside models to understand how they represent information, then use those findings to build new ones.</p>
+                <p>I study how neural networks encode information in phase, geometry, and causal structure, and how those representations shape generalization and interpretability. I use causal interventions to test these mechanisms, then carry the findings into new architectures.</p>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>News</h2>
+            <div class="news-item">
+                <div class="news-date">Jul 2026</div>
+                <div class="news-text">Began a research collaboration with Atticus Geiger and Patrick Lutz on causal analysis of numerical representations in language models, extending the CRT Structure in Transformer Addition project.</div>
             </div>
         </section>
 
