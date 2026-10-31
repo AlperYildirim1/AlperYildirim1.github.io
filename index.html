@@ -3,661 +3,232 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090e18">
-  <meta name="description" content="Alper Yıldırım studies neural representations through mechanistic interpretability, phase and geometry, and develops architectures informed by these mechanisms.">
-
-  <title>Alper Yıldırım — Neural representations, phase & geometry</title>
-
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="Alper Yıldırım is an independent AI researcher interested in mechanistic interpretability, neural representations, phase, and geometry.">
+  <title>Alper Yıldırım — Research & Notes</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-
   <style>
-    /* Additional styles for News and collaborator links. */
-    .news {
-      padding-top: 56px;
-      padding-bottom: 8px;
+    :root {
+      color-scheme: light;
+      --background: #faf9f6;
+      --ink: #252c2e;
+      --muted: #687373;
+      --link: #265f7c;
+      --line: #e0e3de;
+      --serif: 'Iowan Old Style', 'Baskerville', 'Palatino Linotype', Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     }
-
-    .news .section-heading {
-      margin-bottom: 26px;
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 34px; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font: 16px/1.72 var(--sans);
+      -webkit-font-smoothing: antialiased;
     }
-
-    .news-list {
+    a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible { outline: 2px solid var(--link); outline-offset: 4px; }
+    ::selection { background: #d6e8e9; }
+    .site { max-width: 900px; margin-inline: auto; padding: 0 44px; }
+    .skip-link { position: absolute; left: 20px; top: -80px; background: var(--ink); color: white; padding: 10px 14px; z-index: 10; }
+    .skip-link:focus { top: 12px; }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+      padding: 29px 0 26px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .site-name { font-weight: 650; letter-spacing: -0.015em; color: var(--ink); text-decoration: none; }
+    .nav { display: flex; flex-wrap: wrap; gap: 12px 26px; }
+    .nav a { color: var(--muted); text-decoration: none; }
+    .nav a:hover { color: var(--link); text-decoration: underline; }
+    main { padding-bottom: 60px; }
+    .intro { padding: 84px 0 72px; }
+    .eyebrow { margin: 0 0 13px; color: var(--muted); font-size: 13px; letter-spacing: 0.045em; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font: 400 clamp(48px, 8vw, 75px)/1.08 var(--serif);
+      letter-spacing: -0.038em;
+      margin-bottom: 27px;
+    }
+    .lead { max-width: 690px; font-size: 19px; line-height: 1.72; margin-bottom: 19px; }
+    .intro-detail { max-width: 660px; color: #4b5657; line-height: 1.86; margin-bottom: 24px; }
+    .quick-links { display: flex; gap: 9px 20px; flex-wrap: wrap; font-size: 14px; }
+    .section { border-top: 1px solid var(--line); padding-top: 43px; margin-bottom: 68px; }
+    .section-title { font: 400 34px/1.18 var(--serif); letter-spacing: -0.025em; margin: 0 0 26px; }
+    .section-intro { color: var(--muted); margin: -11px 0 26px; }
+    .news-row, .work-row {
+      display: grid;
+      grid-template-columns: 86px minmax(0,1fr);
+      gap: 26px;
+      padding: 22px 0;
       border-top: 1px solid var(--line);
     }
-
-    .news-item {
-      display: grid;
-      grid-template-columns: 105px minmax(0, 1fr);
-      gap: 24px;
-      padding: 25px 0;
-      border-bottom: 1px solid var(--line);
+    .news-row:first-of-type, .work-row:first-of-type { border-top: 0; padding-top: 0; }
+    .when { font-size: 13px; color: var(--muted); padding-top: 3px; white-space: nowrap; }
+    .news-row p { margin: 0; color: #414d4e; }
+    .news-row strong { color: var(--ink); font-weight: 600; }
+    .work-meta { font-size: 12px; color: var(--muted); letter-spacing: .02em; margin-bottom: 5px; }
+    .work-title { font: 400 24px/1.3 var(--serif); letter-spacing: -.013em; margin: 0 0 7px; }
+    .work-authors { color: #5f6a6b; font-size: 14px; margin: 0 0 7px; }
+    .work-summary { max-width: 680px; color: #4e5859; font-size: 15px; line-height: 1.78; margin: 0 0 9px; }
+    .work-links { font-size: 14px; margin: 0; }
+    .background-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .background-grid p { color: #4e5859; margin-bottom: 0; }
+    .background-grid strong { display: block; color: var(--ink); font-size: 15px; font-weight: 600; }
+    .background-grid span { display: block; color: var(--muted); font-size: 13px; margin: 1px 0 7px; }
+    .footer { border-top: 1px solid var(--line); padding: 25px 0 45px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; font-size: 13px; color: var(--muted); }
+    .footer a { color: var(--muted); }
+    @media (max-width: 640px) {
+      .site { padding: 0 24px; }
+      .topbar { padding: 20px 0; }
+      .intro { padding: 59px 0 57px; }
+      .lead { font-size: 17px; }
+      .section { padding-top: 30px; margin-bottom: 51px; }
+      .section-title { font-size: 30px; }
+      .news-row, .work-row { grid-template-columns: 1fr; gap: 3px; padding: 19px 0; }
+      .when { padding: 0; }
+      .work-title { font-size: 22px; }
+      .background-grid { grid-template-columns: 1fr; gap: 20px; }
     }
-
-    .news-when {
-      font: 12px/1.8 var(--mono);
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding-top: 3px;
-    }
-
-    .news-copy h3 {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 1.5;
-      margin: 0 0 9px;
-    }
-
-    .news-copy p {
-      max-width: 860px;
-      font-size: 16px;
-      line-height: 1.85;
-      color: #aebacd;
-      margin: 0;
-    }
-
-    .news-copy a,
-    .inline-link {
-      color: var(--text);
-      text-decoration: underline;
-      text-decoration-color: #526b80;
-      text-underline-offset: 4px;
-    }
-
-    .news-copy a:hover,
-    .inline-link:hover {
-      color: var(--cyan);
-      text-decoration-color: var(--cyan);
-    }
-
-    .news-status {
-      font: 14px/1.5 var(--sans);
-      color: var(--purple);
-      border: 1px solid #524762;
-      border-radius: 3px;
-      padding: 2px 9px;
-    }
-
-    @media (max-width: 760px) {
-      .header {
-        height: auto;
-        min-height: 82px;
-        flex-wrap: wrap;
-        column-gap: 20px;
-        row-gap: 12px;
-        padding-block: 18px;
-      }
-
-      .header nav {
-        flex-wrap: wrap;
-        gap: 18px;
-      }
-
-      .news {
-        padding-top: 36px;
-      }
-
-      .news-item {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 22px 0;
-      }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="header shell">
-    <a class="wordmark" href="#" aria-label="Alper Yıldırım, home">
-      <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <circle cx="18" cy="18" r="13"/>
-        <ellipse cx="18" cy="18" rx="6" ry="16"
-                 transform="rotate(35 18 18)"/>
-        <path d="M5 24 31 12"/>
-      </svg>
-      <span>Alper Yıldırım</span>
-    </a>
-
-    <nav aria-label="Main navigation">
-      <a href="#news">News</a>
-      <a href="#research">Research</a>
-      <a href="#approach">Approach</a>
-      <a href="#about">About</a>
-      <a class="nav-cv"
-         href="assets/Alper_Yildirim_CV.pdf"
-         target="_blank"
-         rel="noopener">
-        CV <span aria-hidden="true">↗</span>
-      </a>
-    </nav>
-  </header>
-
-  <main id="main">
-    <section class="hero shell" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">
-          <span class="small-line"></span>
-          Independent AI researcher
+  <div class="site">
+    <header class="topbar">
+      <a class="site-name" href="#top">Alper Yıldırım</a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#research">Research</a>
+        <a href="assets/Alper_Yildirim_CV.pdf" target="_blank" rel="noopener noreferrer">CV ↗</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section id="about" class="intro" aria-labelledby="name">
+        <p class="eyebrow">Independent AI researcher · Türkiye</p>
+        <h1 id="name">Alper Yıldırım</h1>
+        <p class="lead">
+          I study how neural networks represent and process information,
+          and how understanding those mechanisms can lead to safer and more effective models.
         </p>
-
-        <h1 id="hero-title">
-          The shape of<br>
-          <em>computation.</em>
-        </h1>
-
-        <p class="hero-description">
-          I study how neural networks represent and process information and
-          use what I find to change how they learn.
+        <p class="intro-detail">
+          My interests include mechanistic interpretability, phase and Fourier structure,
+          representation geometry, and architecture design. I work with
+          <a href="https://atticusg.github.io/">Atticus Geiger</a> through PRAIR and collaborate with
+          <a href="https://cs-people.bu.edu/plutz/">Patrick Lutz</a> on the internal algorithms learned by AI models.
         </p>
-
-        <p class="hero-fields">
-          Mechanistic interpretability <span>·</span>
-          Phase &amp; geometry <span>·</span>
-          Architecture design
-        </p>
-
-        <a class="text-link hero-link" href="#research">
-          Explore my research <span aria-hidden="true">↓</span>
-        </a>
-      </div>
-
-      <figure class="phase-figure">
-        <div class="figure-top">
-          <span>01 / PHASE SPACE</span>
-          <span class="math">z = A e<sup>iφ</sup></span>
+        <div class="quick-links" aria-label="Profiles and contact">
+          <a href="mailto:yildirim.alper.dev@gmail.com">Email ↗</a>
+          <a href="https://scholar.google.com/citations?user=yUMIBd4AAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+          <a href="https://github.com/AlperYildirim1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/alper-yildirim-8b6b6a228/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
+      </section>
 
-        <canvas
-          id="phase-canvas"
-          role="img"
-          aria-label="A mathematical visualization of phase-shifted waves on a circular coordinate system. Adjust the phase slider to change their alignment.">
-        </canvas>
-
-        <figcaption>
-          <div class="phase-control">
-            <label for="phase">
-              Relative phase
-              <output id="phase-value" for="phase">0.50π</output>
-            </label>
-            <input
-              id="phase"
-              type="range"
-              min="0"
-              max="200"
-              value="50"
-              aria-valuetext="0.50 pi radians">
-          </div>
-
-          <button
-            id="motion-toggle"
-            class="motion-toggle"
-            type="button"
-            aria-pressed="false"
-            aria-label="Pause phase animation">
-            <span id="motion-symbol" aria-hidden="true">Ⅱ</span>
-          </button>
-        </figcaption>
-
-        <p class="figure-note">
-          An illustration of phase and interference.
-        </p>
-      </figure>
-
-      <div class="hero-bottom">
-        <span>Understanding mechanisms. Designing with them.</span>
-        <a href="https://scholar.google.com/citations?user=yUMIBd4AAAAJ"
-           target="_blank"
-           rel="noopener">
-          Google Scholar <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <section id="news" class="news shell" aria-labelledby="news-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Updates / Now</p>
-          <h2 id="news-title">
-            News &amp; <em>current work.</em>
-          </h2>
+      <section id="news" class="section" aria-labelledby="news-title">
+        <h2 id="news-title" class="section-title">News</h2>
+        <div class="news-row">
+          <div class="when"><time datetime="2026-09">Sep 2026</time></div>
+          <p><strong>NeurIPS 2026.</strong> My sole-authored paper,
+            <a href="https://arxiv.org/abs/2603.05228">The Geometric Inductive Bias of Grokking</a>,
+            was accepted as a poster.</p>
         </div>
-      </div>
-
-      <div class="news-list">
-        <article class="news-item">
-          <time class="news-when" datetime="2026-09-24">Sep 2026</time>
-          <div class="news-copy">
-            <h3>NeurIPS 2026 acceptance</h3>
-            <p>
-              My sole-authored paper,
-              <a href="https://arxiv.org/abs/2603.05228"
-                 target="_blank"
-                 rel="noopener">The Geometric Inductive Bias of Grokking</a>,
-              has been accepted as a poster at NeurIPS 2026.
-            </p>
-          </div>
-        </article>
-
-        <article class="news-item">
-          <span class="news-when">Now</span>
-          <div class="news-copy">
-            <h3>Research with PRAIR</h3>
-            <p>
-              I’m working with
-              <a href="https://atticusg.github.io/"
-                 target="_blank"
-                 rel="noopener">Atticus Geiger</a>
-              through the PRAIR group and collaborating with
-              <a href="https://cs-people.bu.edu/plutz/"
-                 target="_blank"
-                 rel="noopener">Patrick Lutz</a>
-              on mechanistic interpretability and the internal algorithms
-              learned by AI models.
-            </p>
-          </div>
-        </article>
-
-        <article class="news-item">
-          <span class="news-when">Up next</span>
-          <div class="news-copy">
-            <h3>
-              New research
-              <span class="news-status">Coming soon</span>
-            </h3>
-            <p>
-              A new manuscript is in preparation. More details when the
-              work is public.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="research"
-             class="research shell"
-             aria-labelledby="research-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">01 / Selected work</p>
-          <h2 id="research-title">
-            From signals to <em>mechanisms.</em>
-          </h2>
+        <div class="news-row">
+          <div class="when">Currently</div>
+          <p><strong>Ongoing work.</strong> I'm exploring how training data shapes the internal
+            algorithms language models learn.</p>
         </div>
-        <span class="section-aside">
-          Language · Vision · Learning · Optics
-        </span>
-      </div>
+      </section>
 
-      <article class="paper featured">
-        <div class="paper-visual prism-visual">
-          <div class="visual-label">
-            <span>PRISM</span>
-            <span>PHASE → INTERFERENCE</span>
-          </div>
-          <img
-            src="assets/prism.svg"
-            alt="Conceptual diagram of three phase-encoded wave signals combined into an interference pattern."
-            width="720"
-            height="400">
-          <span class="visual-caption">
-            Complex-valued sequence modeling · schematic
-          </span>
-        </div>
+      <section id="research" class="section" aria-labelledby="research-title">
+        <h2 id="research-title" class="section-title">Research</h2>
+        <p class="section-intro">Selected papers and preprints. Full publication information is linked below.</p>
 
-        <div class="paper-body">
-          <div class="paper-meta">
-            <span class="badge accepted">ICML 2026 · Main track</span>
-            <span class="paper-year">2026</span>
-          </div>
-
-          <h3>Language as a Wave Phenomenon</h3>
-          <p class="paper-subtitle">
-            Semantic Phase Locking and Interference in Neural Networks
-          </p>
-          <p>
-            What can phase contribute to language modeling? PRISM explores
-            complex-valued sequence processing with FFT mixing and
-            phase-preserving operations.
-          </p>
-          <p class="authors">Alper Yıldırım, İbrahim Yücedağ</p>
-
-          <div class="paper-links">
-            <a href="https://icml.cc/virtual/2026/poster/61710"
-               target="_blank"
-               rel="noopener">
-              Conference paper <span aria-hidden="true">↗</span>
-            </a>
-            <span class="topic">Phase · Architecture</span>
-          </div>
-        </div>
-      </article>
-
-      <div class="paper-grid">
-        <article class="paper">
-          <div class="paper-visual">
-            <div class="visual-label">
-              <span>GEOMETRIC INDUCTIVE BIAS</span>
-              <span>‖h‖₂ = 1</span>
-            </div>
-            <img
-              src="assets/geometry.svg"
-              alt="A vector projected onto a unit sphere, illustrating a geometric constraint on representations. This is a schematic, not an experimental plot."
-              width="720"
-              height="400"
-              loading="lazy">
-            <span class="visual-caption">
-              Constraining representation geometry · schematic
-            </span>
-          </div>
-
-          <div class="paper-body">
-            <div class="paper-meta">
-              <span class="badge accepted">NeurIPS 2026 · Accepted (poster)</span>
-              <span class="paper-year">2026</span>
-            </div>
-
-            <h3>The Geometric Inductive Bias of Grokking</h3>
-            <p>
-              Spherical constraints accelerate generalization on modular
-              addition. The model also generalizes on S₅ and A₅, but shows
-              no acceleration over LayerNorm on these tasks.
-            </p>
-            <p class="authors">Alper Yıldırım</p>
-
-            <div class="paper-links">
-              <a href="https://arxiv.org/abs/2603.05228"
-                 target="_blank"
-                 rel="noopener">
-                Read paper <span aria-hidden="true">↗</span>
-              </a>
-              <span class="topic">Geometry · Learning dynamics</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="paper">
-          <div class="paper-visual">
-            <div class="visual-label">
-              <span>INTERNAL OPPENHEIM–LIM TEST</span>
-              <span>φ / A</span>
-            </div>
-            <img
-              src="assets/phase.svg"
-              alt="Conceptual Fourier transplant: a source signal retains its magnitude and receives a donor's phase to form a hybrid signal."
-              width="720"
-              height="400"
-              loading="lazy">
-            <span class="visual-caption">
-              Source magnitude + donor phase · schematic
-            </span>
-          </div>
-
-          <div class="paper-body">
-            <div class="paper-meta">
-              <span class="badge">Preprint</span>
-              <span class="paper-year">2026</span>
-            </div>
-
-            <h3>The Importance of Phase in Neural Representations</h3>
-            <p>
-              Layer-resolved phase and magnitude transplants test what carries
-              class identity inside image classifiers. In the tested models,
-              identity follows phase or sign.
-            </p>
-            <p class="authors">Alper Yıldırım</p>
-
-            <div class="paper-links">
-              <a href="https://arxiv.org/abs/2606.17037"
-                 target="_blank"
-                 rel="noopener">
-                Read paper <span aria-hidden="true">↗</span>
-              </a>
-              <span class="topic">Causal analysis · Vision</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="paper">
-          <div class="paper-visual">
-            <div class="visual-label">
-              <span>HAMON</span>
-              <span>LEARNED PHASE → LIGHT</span>
-            </div>
-            <img
-              src="assets/optics.svg"
-              alt="Conceptual optical propagation diagram: an input field passes through a phase mask and propagates toward an output plane."
-              width="720"
-              height="400"
-              loading="lazy">
-            <span class="visual-caption">
-              Passive diffractive sequence mixing · schematic
-            </span>
-          </div>
-
-          <div class="paper-body">
-            <div class="paper-meta">
-              <span class="badge">Preprint</span>
-              <span class="paper-year">2026</span>
-            </div>
-
-            <h3>HAMON: Passive Optical Sequence Mixing</h3>
-            <p>
-              Trainable phase masks connect sequence modeling to passive
-              optical computation, studied through differentiable simulation
-              and causal controls for long-horizon forecasting.
-            </p>
-            <p class="authors">
-              Alper Yıldırım
-              <span>· Two Turkish patent applications pending</span>
-            </p>
-
-            <div class="paper-links">
-              <a href="https://arxiv.org/abs/2606.17028"
-                 target="_blank"
-                 rel="noopener">
-                Read paper <span aria-hidden="true">↗</span>
-              </a>
-              <span class="topic">Optics · Architecture</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="paper">
-          <div class="paper-visual">
-            <div class="visual-label">
-              <span>REPRESENTATIONS FOR TIME SERIES</span>
-              <span>FEATURE → INTERVENTION</span>
-            </div>
-            <img
-              src="assets/features.svg"
-              alt="Conceptual diagram showing a time series mapped to sparse features, with one feature highlighted for intervention."
-              width="720"
-              height="400"
-              loading="lazy">
-            <span class="visual-caption">
-              Sparse features and causal probing · schematic
-            </span>
-          </div>
-
-          <div class="paper-body">
-            <div class="paper-meta">
-              <span class="badge review">Under review</span>
-              <span class="paper-year">2026</span>
-            </div>
-
-            <h3>Superposition Is Not Necessary</h3>
-            <p>
-              Sparse autoencoders and causal interventions examine whether
-              PatchTST relies on superposed features for competitive
-              performance on standard forecasting benchmarks.
-            </p>
-            <p class="authors">Alper Yıldırım</p>
-
-            <div class="paper-links">
-              <a href="https://arxiv.org/abs/2605.05151"
-                 target="_blank"
-                 rel="noopener">
-                Read paper <span aria-hidden="true">↗</span>
-              </a>
-              <span class="topic">Interpretability · Time series</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="approach"
-             class="approach shell"
-             aria-labelledby="approach-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">02 / Research approach</p>
-          <h2 id="approach-title">
-            Understand. Intervene.<br>
-            <em>Build on what holds.</em>
-          </h2>
-        </div>
-        <p class="approach-intro">
-          I connect mechanistic analysis with changes to architecture and
-          training. Each intervention is a way to test an explanation.
-        </p>
-      </div>
-
-      <div class="approach-grid">
-        <div>
-          <span class="approach-number">I.</span>
-          <h3>Read the representation</h3>
-          <p>
-            Use phase, Fourier structure, geometry, and causal probing to
-            investigate how information is encoded and used.
-          </p>
-          <span class="approach-foot">Features · Circuits · Symmetries</span>
-        </div>
-
-        <div>
-          <span class="approach-number">II.</span>
-          <h3>Test the mechanism</h3>
-          <p>
-            Change internal variables, architectural constraints, or training
-            data. Measure which predictions survive the intervention.
-          </p>
-          <span class="approach-foot">
-            Causal interventions · Training dynamics
-          </span>
-        </div>
-
-        <div>
-          <span class="approach-number">III.</span>
-          <h3>Turn findings into design</h3>
-          <p>
-            Translate supported mechanisms into phase-preserving architectures,
-            geometric inductive biases, and optical computation.
-          </p>
-          <span class="approach-foot">
-            Architectures · Inductive biases · Optics
-          </span>
-        </div>
-      </div>
-
-      <div class="ongoing">
-        <span class="eyebrow">Currently exploring</span>
-        <p>
-          How training data shapes the internal algorithms that language
-          models learn.
-        </p>
-        <span class="ongoing-status">Work in progress</span>
-      </div>
-    </section>
-
-    <section id="about" class="about shell" aria-labelledby="about-title">
-      <div>
-        <p class="eyebrow">03 / About</p>
-        <h2 id="about-title">Alper <em>Yıldırım.</em></h2>
-        <p class="about-location">Independent AI researcher · Turkey</p>
-
-        <div class="social-links">
-          <a href="https://github.com/AlperYildirim1"
-             target="_blank"
-             rel="noopener">GitHub ↗</a>
-          <a href="https://scholar.google.com/citations?user=yUMIBd4AAAAJ"
-             target="_blank"
-             rel="noopener">Scholar ↗</a>
-          <a href="https://www.linkedin.com/in/alper-yildirim-8b6b6a228/"
-             target="_blank"
-             rel="noopener">LinkedIn ↗</a>
-        </div>
-      </div>
-
-      <div class="about-copy">
-        <p>
-          I work on mechanistic interpretability and architecture design,
-          with a particular interest in phase, geometry, and the structure
-          of computation.
-        </p>
-        <p>
-          My research spans language, vision, learning dynamics, time series,
-          and optical computing. I work with
-          <a class="inline-link"
-             href="https://atticusg.github.io/"
-             target="_blank"
-             rel="noopener">Atticus Geiger</a>
-          through the PRAIR group and collaborate with
-          <a class="inline-link"
-             href="https://cs-people.bu.edu/plutz/"
-             target="_blank"
-             rel="noopener">Patrick Lutz</a>
-          on the causal analysis of AI models and the algorithms they discover.
-        </p>
-
-        <div class="experience">
+        <article class="work-row">
+          <div class="when">2026</div>
           <div>
-            <span>2026</span>
-            <p>
-              B.Sc. Computer Engineering
-              <small>Düzce University</small>
-            </p>
+            <p class="work-meta">ICML 2026 · Main track</p>
+            <h3 class="work-title">Language as a Wave Phenomenon: Semantic Phase Locking and Interference in Neural Networks</h3>
+            <p class="work-authors">Alper Yıldırım, İbrahim Yücedağ</p>
+            <p class="work-summary">Complex-valued sequence modeling with FFT mixing and phase-preserving operations.</p>
+            <p class="work-links"><a href="https://icml.cc/virtual/2026/poster/61710">Conference paper ↗</a></p>
+          </div>
+        </article>
+
+        <article class="work-row">
+          <div class="when">2026</div>
+          <div>
+            <p class="work-meta">NeurIPS 2026 · Accepted poster</p>
+            <h3 class="work-title">The Geometric Inductive Bias of Grokking</h3>
+            <p class="work-authors">Alper Yıldırım</p>
+            <p class="work-summary">Studying how spherical constraints affect generalization and learning dynamics.</p>
+            <p class="work-links"><a href="https://arxiv.org/abs/2603.05228">Paper ↗</a></p>
+          </div>
+        </article>
+
+        <article class="work-row">
+          <div class="when">2026</div>
+          <div>
+            <p class="work-meta">Preprint</p>
+            <h3 class="work-title">The Importance of Phase in Neural Representations</h3>
+            <p class="work-authors">Alper Yıldırım</p>
+            <p class="work-summary">Causal phase and magnitude interventions in the representations of image classifiers.</p>
+            <p class="work-links"><a href="https://arxiv.org/abs/2606.17037">Paper ↗</a></p>
+          </div>
+        </article>
+
+        <article class="work-row">
+          <div class="when">2026</div>
+          <div>
+            <p class="work-meta">Preprint</p>
+            <h3 class="work-title">HAMON: Passive Optical Sequence Mixing</h3>
+            <p class="work-authors">Alper Yıldırım</p>
+            <p class="work-summary">Exploring learned phase masks and passive optical computation for sequence modeling.</p>
+            <p class="work-links"><a href="https://arxiv.org/abs/2606.17028">Paper ↗</a></p>
+          </div>
+        </article>
+
+        <article class="work-row">
+          <div class="when">2026</div>
+          <div>
+            <p class="work-meta">Under review</p>
+            <h3 class="work-title">Superposition Is Not Necessary</h3>
+            <p class="work-authors">Alper Yıldırım</p>
+            <p class="work-summary">Sparse features and causal interventions in time-series forecasting models.</p>
+            <p class="work-links"><a href="https://arxiv.org/abs/2605.05151">Paper ↗</a></p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="background-title">
+        <h2 class="section-title" id="background-title">Background</h2>
+        <div class="background-grid">
+          <div>
+            <strong>B.Sc. in Computer Engineering</strong>
+            <span>2026 · Düzce University</span>
+            <p>My academic background is in computer engineering, with a focus on understanding and developing learning systems.</p>
           </div>
           <div>
-            <span>2024–25</span>
-            <p>
-              AI Engineer &amp; Lead Researcher
-              <small>isTechSoft</small>
-            </p>
+            <strong>AI Engineer &amp; Lead Researcher</strong>
+            <span>2024–2025 · isTechSoft</span>
+            <p>Prior industry research and engineering experience.</p>
           </div>
         </div>
-
-        <a class="text-link"
-           href="assets/Alper_Yildirim_CV.pdf"
-           target="_blank"
-           rel="noopener">
-          Full curriculum vitae <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <section class="contact shell" aria-label="Contact">
-      <div>
-        <p class="eyebrow">Get in touch</p>
-        <p>Let’s compare <em>notes.</em></p>
-      </div>
-      <a href="mailto:yildirim.alper.dev@gmail.com">
-        yildirim.alper.dev@gmail.com <span aria-hidden="true">↗</span>
-      </a>
-    </section>
-  </main>
-
-  <footer class="footer shell">
-    <span>© 2026 Alper Yıldırım</span>
-    <span>Phase. Geometry. Computation.</span>
-    <a href="#">Back to top ↑</a>
-  </footer>
+      </section>
+    </main>
+    <footer class="footer">
+      <span>© 2026 Alper Yıldırım</span>
+      <span>Built simply, for reading. <a href="mailto:yildirim.alper.dev@gmail.com">Get in touch ↗</a></span>
+    </footer>
+  </div>
 </body>
 </html>
